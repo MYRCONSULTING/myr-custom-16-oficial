@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'Nubefact - EDI for Peru',
+    'name': 'Nubefact - EDI for Peru..',
     'icon': '/l10n_pe/static/description/icon.png',
     'version': '0.1',
     'summary': 'Electronic Invoicing for Peru (OSE method) and UBL 2.1',
