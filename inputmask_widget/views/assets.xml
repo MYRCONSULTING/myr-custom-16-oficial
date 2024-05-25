@@ -1,0 +1,10 @@
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend" name="example assets">
+        <xpath expr="." position="inside">
+            
+            <script type="text/javascript" src="/inputmask_widget/static/lib/jquery.inputmask/jquery.inputmask.bundle.js"></script>
+            <script type="text/javascript" src="/inputmask_widget/static/src/js/fields.js"></script>
+            <script type="text/javascript" src="/inputmask_widget/static/src/js/registry.js"></script>
+        </xpath>
+    </template>
+</odoo>
