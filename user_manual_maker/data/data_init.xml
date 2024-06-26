@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+	<record id="user_manual_typification" model="usermanual_typification">
+		<field name="name">User Manuals</field>
+	</record>
+
+	<record id="user_manual_category" model="usermanual_category">
+		<field name="name">Private</field>
+	</record>
+
+	<record id="user_manual_example" model="user_manual_maker">
+		<field name="name">User Manual Maker</field>
+		<field name="description">This manual serves as an example to create manuals</field>
+		<field name="resuser_id">1</field>
+        <field name="status">1</field>
+        <field name="typ_id">1</field>
+		<field name="category_id">1</field>
+	</record>
+
+	<record id="user_manual_section_1" model="usermanual_seccion">
+		<field name="name">Interface Description</field>
+		<field name="umanual_id">1</field>
+		<field name="descripcion">Interface Description</field>
+	</record>
+	<record id="user_manual_section_2" model="usermanual_seccion">
+		<field name="name">Create typifications</field>
+		<field name="umanual_id">1</field>
+		<field name="descripcion">Create typifications</field>
+	</record>
+	<record id="user_manual_section_3" model="usermanual_seccion">
+		<field name="name">Manual Header</field>
+		<field name="umanual_id">1</field>
+		<field name="descripcion">Manual Header</field>
+	</record>
+	<record id="user_manual_section_4" model="usermanual_seccion">
+		<field name="name">Creating Sections</field>
+		<field name="umanual_id">1</field>
+		<field name="descripcion">Creating Sections</field>
+	</record>
+	<record id="user_manual_section_5" model="usermanual_seccion">
+		<field name="name">Defining the Steps</field>
+		<field name="umanual_id">1</field>
+		<field name="descripcion">Defining the Steps</field>
+	</record>
+
+	<!-- STEPS -->
+	<record id="user_manual_step_1" model="usermanual_step">
+		<field name="name">Main Button</field>
+		<field name="seccionman_id">1</field>
+		<field name="note">Tenemos de izquierda a derecha el boton de principal, se concidera principal porque lleva el nombre del modulo y tambien es un acceso directo a los manuales.</field>
+	</record>
+	<record id="user_manual_step_2" model="usermanual_step">
+		<field name="name">Manuals button</field>
+		<field name="seccionman_id">1</field>
+		<field name="note">Here we can see the manuals created</field>
+	</record>
+	<record id="user_manual_step_3" model="usermanual_step">
+		<field name="name">Settings Button</field>
+		<field name="seccionman_id">1</field>
+		<field name="note">In this section we can configure or add features to the manuals.</field>
+	</record>
+	<record id="user_manual_step_4" model="usermanual_step">
+		<field name="name">Crear Tipificacion</field>
+		<field name="seccionman_id">2</field>
+		<field name="note">Para crear tipificaciones tenemos dos opciones, la primera es accediendo desde el menú configuración y después en tipificaciones y dar clic en el botón "Crear".</field>
+	</record>
+	<record id="user_manual_step_5" model="usermanual_step">
+		<field name="name">Asignando nombre de Tipificacion</field>
+		<field name="seccionman_id">2</field>
+		<field name="note">Asignamos un nombre de la tipificación.</field>
+	</record>
+	<record id="user_manual_step_6" model="usermanual_step">
+		<field name="name">Agregar Manuales relacionados</field>
+		<field name="seccionman_id">2</field>
+		<field name="note">Este ultimo paso es para agregar y relacionar todos los manuales que estén asignados a esta tipificación.</field>
+	</record>
+	<record id="user_manual_step_7" model="usermanual_step">
+		<field name="name">Dándole nombre al manual</field>
+		<field name="seccionman_id">3</field>
+		<field name="note">Colocamos el nombre de nuestro manual.</field>
+	</record>
+	<record id="user_manual_step_8" model="usermanual_step">
+		<field name="name">Asignando una Tipificación al manual</field>
+		<field name="seccionman_id">3</field>
+		<field name="note">Asignamos o creamos una nueva tipificación para el manual.</field>
+	</record>
+	<record id="user_manual_step_9" model="usermanual_step">
+		<field name="name">Descripcion del manual</field>
+		<field name="seccionman_id">3</field>
+		<field name="note">Añadimos en esta parte una descripcion.</field>
+	</record>
+	<record id="user_manual_step_10" model="usermanual_step">
+		<field name="name">Definiendo un nombre de seccion</field>
+		<field name="seccionman_id">4</field>
+		<field name="note">Asignamos el nombre para la sección.</field>
+	</record>
+	<record id="user_manual_step_11" model="usermanual_step">
+		<field name="name">Descripcion de la seccion</field>
+		<field name="seccionman_id">4</field>
+		<field name="note">Asignamos una descripción en la sección.</field>
+	</record>
+	<record id="user_manual_step_12" model="usermanual_step">
+		<field name="name">Imagen de la sección</field>
+		<field name="seccionman_id">5</field>
+		<field name="note">En esta version tenemos la posibilidad de subir una imagen que sea vsible en el modo web y modo impreso.</field>
+	</record>
+	<record id="user_manual_step_13" model="usermanual_step">
+		<field name="name">Descripción del paso</field>
+		<field name="seccionman_id">5</field>
+		<field name="note">Asignamos la instrucción del proceso a seguir en esta parte.</field>
+	</record>
+	<record id="user_manual_step_14" model="usermanual_step">
+		<field name="name">Asignando un nombre al paso</field>
+		<field name="seccionman_id">5</field>
+		<field name="note">Ponemos un nombre al paso a seguir.</field>
+	</record>
+	<!-- STEPS -->
+	<record id="user_manual_comment" model="usermanual_comment">
+		<field name="name">1</field>
+		<field name="comment">This manual serves as an example to create manuals</field>
+		<field name="manual_id">1</field>
+	</record>
+
+</odoo>

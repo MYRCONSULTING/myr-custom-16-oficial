@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+	<record id="view_usermanual_maker_kanban" model="ir.ui.view">
+		<field name="name">User Manual Maker kanban</field>
+		<field name="model">user_manual_maker</field>
+		<field name="arch" type="xml">
+			<kanban class="o_kanban_mobile" sample="1">
+				<field name="id"/>
+				<field name="active"/>
+				<field name="status"/>
+				<field name="name"/>
+				<field name="description" string="Description" required="1"/>
+				<field name="typ_id" string="Typification" required="1"/>
+				
+				<templates>
+					<t t-name="kanban-box">
+						<div t-attf-class="oe_kanban_global_click">
+							<div class="o_kanban_record_top mb-2">
+								<div class="o_kanban_record_headings ms-1">
+									<strong class="o_kanban_record_title" style="font-size: medium;"><field name="name"/></strong>
+								</div>
+								<strong><field name="status" widget="label_selection" options="{'classes': {'1': 'primary', '2': 'warning', '3': 'info', '4': 'success'}}"/></strong>
+							</div>
+							<div class="o_kanban_record_bottom mb-1 ms-1">
+								<div class="oe_kanban_bottom_left ">
+									<field name="typ_id" class="text-primary" />
+								</div>
+								<div class="oe_kanban_bottom_right">
+									<field name="create_date" class="text-primary" widget="date"/>
+								</div>
+							</div>
+							<div class="o_kanban_record_bottom">
+								<div class="oe_kanban_bottom_left d-grid gap-2"></div>
+								<div class="oe_kanban_bottom_right d-grid gap-2 me-1" >
+									<button name="add_comment_kanban" type="object" class="btn-primary btn-sm" icon="fa-comments"/>
+								</div>
+								<div class="oe_kanban_bottom_right d-grid gap-2">
+									<button name="get_reporte" type="object" class="btn-primary btn-sm"><i class="oi oi-launch"/></button>
+								</div>
+							</div>					
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<record id="view_usermanual_maker_form" model="ir.ui.view">
+		<field name="name">User Manual Maker Form</field>
+		<field name="model">user_manual_maker</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="set_draft" string="Draft" class="btn-primary" type="object" attrs="{'readonly': [('status', '!=', '1')]}"/>
+					<button name="set_revision" string="Revision" class="btn-primary" type="object" />
+					<button name="set_approved" string="Approve" class="btn-primary" type="object" />
+					<button name="set_published" string="Post" class="btn-primary" type="object" />
+					<field name="status" widget="statusbar" statusbar_visible="1,2,3,4" on_change="1" />
+				</header> 
+				<field name="active" invisible="1"/>
+				<sheet>				
+					<div name="button_box" position="inside">
+						<button string="Section" class="oe_stat_button" type="object" name="get_section" icon="fa-book">
+							<field string="Sections" name="usrmandetalle_ids" widget="statinfo" />
+						</button>
+					</div>
+					<group>
+						<group>
+							<field name="name" string="Manual Name" required="1"/>
+							<field name="resuser_id" string="Maker" readonly="1" optional=""/>					
+						</group>
+						<group>							
+							<field name="description" string="Description" required="1"/>
+							<field name="typ_id" string="Typification" required="1"/>
+							<field name="category_id" string="Category" required="1"/>
+						</group>
+					</group>
+					<notebook>
+							<page name="Sections" string="Sections">
+								<field name="usrmandetalle_ids" string="Sections">
+									<tree>
+										<control>
+											<create name="add" string="Add Section"/>
+										</control>
+										<field name="id" string="id" optional="hide" readonly="1"/>
+										<field name="sequence" widget="handle" />
+										<field name="name" string="Name" optional="show"/>
+										<field name="umanual_id" string="Manual Name" optional="show"/>
+										<field name="usrmanstep_id" string="Steps" optional="show"/>
+									</tree>
+								</field>
+							</page>
+							<page name="Comments" string="Comments">
+								<field name="comment_ids" string="Comments">
+									<tree >
+										<field name="id" string="id" optional="hide" readonly="1"/>
+										<field name="name" string="User" optional="show" readonly="1"/>
+										<field name="manual_id" string="Manual" optional="show" readonly="1"/>
+										<field name="comment" string="Comments" optional="show" />
+									</tree>
+								</field>
+							</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" />
+					<field name="activity_ids" />
+					<field name="message_ids" />
+				</div>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_usermanual_maker_tree" model="ir.ui.view">
+		<field name="name">User Manual Maker Tree</field>
+		<field name="model">user_manual_maker</field>
+		<field name="arch" type="xml">
+			<tree string="List" default_order="id desc">
+				<field name="id" string="ID" optional="hide"/>
+				<field name="name" string="Name" optional="show"/>
+				<field name="description" string="Description" optional="show"/>				
+				<field name="resuser_id" string="Maker" optional="show"/>
+				<field name="usrmandetalle_ids" string="Sections" optional="show"/>
+				<field name="typ_id" string="Typification" optional="show"/>
+				<field name="category_id" string="Category" optional="show"/>
+				<field name="status" string="Status" optional="show"/>
+				<button name="get_reporte" type="object" class="btn-primary" icon="fa-desktop"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_usermanual_maker_search" model="ir.ui.view">
+		<field name="name">User Manual Maker Search</field>
+		<field name="model">user_manual_maker</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" string="Manual Name"/>
+				<searchpanel>
+					<field name="typ_id" enable_counters="1"/>
+					<field name="category_id" enable_counters="1"/>
+				</searchpanel>
+			</search>
+		</field>
+	</record>
+
+</odoo>

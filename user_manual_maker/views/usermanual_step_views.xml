@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<record id="view_usermanual_step_form" model="ir.ui.view">
+    <field name="name">User Manual Step form</field>
+    <field name="model">usermanual_step</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name" string="Step Name" required="1"/>							
+                    </group>
+                    <group>							
+                        <field name="seccionman_id" string="Section" readonly="1"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="note" string="Text" required="1"/>						
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_usermanual_step_tree" model="ir.ui.view">
+    <field name="name">User Manual Step tree</field>
+    <field name="model">usermanual_step</field>
+    <field name="arch" type="xml">
+        <tree string="Lista">
+            <control>
+                <create name="add" string="Agregar Paso"/>
+            </control>
+            <field name="id" string="Id" optional="hide"/>
+            <field name="sequence" widget="handle" />
+            <field name="name" string="Name" optional="show"/>
+            <field name="seccionman_id" string="Section" optional="show"/>
+            <field name="note" string="Texto" optional="hide"/>
+        </tree>
+    </field>
+</record>
+
+<record id="view_usermanual_step_search" model="ir.ui.view">
+    <field name="name">User Manual Step Search</field>
+    <field name="model">usermanual_step</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name" string="Name"/>
+            <field name="seccionman_id" string="Section"/>
+            <searchpanel>
+                <field name="seccionman_id" enable_counters="1"/>
+            </searchpanel>
+        </search>
+    </field>
+</record>
+</odoo>

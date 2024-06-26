@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+	<record id="action_usermanual_maker" model="ir.actions.act_window">
+		<field name="name">User Manual Maker</field>
+		<field name="res_model">user_manual_maker</field>
+		<field name="view_mode">tree,form,kanban</field>
+	</record>
+
+	<record id="action_usermanual_umm" model="ir.actions.act_window">
+		<field name="name">User Manual Maker</field>
+		<field name="res_model">user_manual_maker</field>
+		<field name="view_mode">kanban,tree</field>
+		<field name="domain">[('status', '=', 4)]</field>
+	</record>
+
+	<record id="action_usermanual_seccion" model="ir.actions.act_window">
+		<field name="name">Manual Sections</field>
+		<field name="res_model">usermanual_seccion</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_usermanual_step" model="ir.actions.act_window">
+		<field name="name">Section Steps</field>
+		<field name="res_model">usermanual_step</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_usermanual_comment" model="ir.actions.act_window">
+		<field name="name">User Comments</field>
+		<field name="res_model">usermanual_comment</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<record id="action_usermanual_typification" model="ir.actions.act_window">
+		<field name="name">Typifications</field>
+		<field name="res_model">usermanual_typification</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+	<!-- MENU ADMIN -->
+	<menuitem  id="menu_ursmanmkr" name="User Manual Maker" web_icon="user_manual_maker,static/description/icon.png" action="action_usermanual_maker" groups="grupo_usermanualmaker_administrador"/>
+	<menuitem  id="menu_ursmanmkr_all" name="Manuals" parent="menu_ursmanmkr" sequence="1" />
+		<menuitem  id="menu_ursmanmkr_manual_all" name="Manuals" parent="menu_ursmanmkr_all" sequence="1" action="action_usermanual_maker"/>
+		<menuitem  id="menu_ursmanmkr_secciones" name="Sections" parent="menu_ursmanmkr_all" sequence="2" groups="grupo_usermanualmaker_administrador" action="action_usermanual_seccion"/>
+		<menuitem  id="menu_ursmanmkr_pasos" name="Steps" parent="menu_ursmanmkr_all" sequence="3" groups="grupo_usermanualmaker_administrador" action="action_usermanual_step"/>
+
+	<menuitem  id="menu_ursmanmkr_config" name="Setting" parent="menu_ursmanmkr" sequence="99" groups="grupo_usermanualmaker_administrador" action="action_usermanual_typification"/>
+		<menuitem  id="menu_ursmanmkr_tipis" name="Typifications" parent="menu_ursmanmkr_config" sequence="2" action="action_usermanual_typification"/>
+		<menuitem  id="menu_ursmanmkr_comments" name="Comments" parent="menu_ursmanmkr_config" sequence="1" action="action_usermanual_comment"/>
+	<!-- MENU ADMIN -->
+
+	<!-- MENU USER -->
+	<menuitem  id="menu_usermanuals_umm" name="User Manuals" web_icon="user_manual_maker,static/description/icon_usr.png" action="action_usermanual_umm" groups="grupo_usermanualmaker_usuario"/>
+	<menuitem  id="menu_ursmanuals_all" name="Manuals" parent="menu_usermanuals_umm" sequence="1" groups="grupo_usermanualmaker_usuario"/>
+	<!-- MENU USER -->
+
+
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<!-- categoria Padre -->
+	<record id="module_category_usermanualmaker" model="ir.module.category">
+		<field name="name">User Manual Maker</field>
+		<field name="sequence">1</field>
+	</record>
+	<!-- Categoria Hijo -->
+	<record id="module_category_usermanualmaker_usermanualmaker" model="ir.module.category">
+		<field name="name">Manual Maker</field>
+		<field name="sequence">1</field>
+		<field name="parent_id" ref="module_category_usermanualmaker"/>
+	</record>
+	<!-- Grupos -->
+	<record id="grupo_usermanualmaker_usuario" model="res.groups">
+		<field name="name">Usuario</field>
+		<field name="category_id" ref="module_category_usermanualmaker_usermanualmaker"/>
+	</record>
+
+	<record id="grupo_usermanualmaker_administrador" model="res.groups">
+		<field name="name">Administrador</field>
+		<field name="category_id" ref="module_category_usermanualmaker_usermanualmaker"/>
+		<field name="implied_ids" eval="[(4,ref('grupo_usermanualmaker_usuario'))]"/>
+	</record>
+
+	
+</odoo>

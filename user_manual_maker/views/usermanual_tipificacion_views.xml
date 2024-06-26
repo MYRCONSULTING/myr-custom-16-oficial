@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+	<record id="view_usermanual_typification_form" model="ir.ui.view">
+		<field name="name">User Manual Tipification Form</field>
+		<field name="model">usermanual_typification</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="name" string="Name Typification"/>
+						</group>
+					</group>
+					<group>
+						<field name="umanual_ids" string="Related Manuals"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_usermanual_typification_tree" model="ir.ui.view">
+		<field name="name">User Manual Tipification tree</field>
+		<field name="model">usermanual_typification</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="id" string="id" optional="hide" readonly="1"/>
+				<field name="name" string="Name" optional="show" readonly="1"/>
+				<field name="umanual_ids" string="Manuals" optional="show" readonly="1"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_usermanual_typification_search" model="ir.ui.view">
+		<field name="name">User Manual Tipification Search</field>
+		<field name="model">usermanual_typification</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" string="Name"/>
+				<field name="umanual_ids" string="Manual"/>
+			</search>
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_user_manual" model="ir.actions.report" >
+        <field name="name">Manual Report</field>
+        <field name="model">user_manual_maker</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">user_manual_maker.report_user_manual</field>
+        <field name="report_file">user_manual_maker.report_user_manual</field>
+        <field name="print_report_name">('Manual - %s' % (object.name))</field>
+        <field name="binding_model_id" ref="model_user_manual_maker"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_user_manual">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="container-fluid p-5 bg-primary text-white text-center">
+                        <center><h1 t-field="o.name"/></center>
+                        <center><h3 t-field="o.description"/></center> 
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;position: fixed;">
+                                <a href="#" class=" btn ms-4 mb-3 align-items-center text-decoration-none border-bottom">
+                                <!-- <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg> -->
+                                <span class="fs-5 fw-semibold">Menu Panel</span>
+                                </a>
+                                <ul class="list-unstyled ps-0">
+                                    <tr t-foreach="request.env['usermanual_seccion'].search([('umanual_id','=',o.id)], order='sequence asc')" t-as="c">
+                                        <li class="mb-1">
+                                            <a t-field="c.name" class="btn btn-toggle btn-outline-primary align-items-center rounded" t-att="{'href':'#'+str(c.id)}">                                                
+                                            </a>
+                                        </li>
+                                    </tr>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <tr t-foreach="request.env['usermanual_seccion'].search([('umanual_id','=',o.id)], order='sequence asc')" t-as="cp">
+                                <section class="s_text_image mt-2 mb-2 o_colored_level" style="background-image: none;" t-att="{'id':str(cp.id)}">
+                                    <div class="container row align-items-center">                                        
+                                        <div class="col-lg-6 pt16 pb16 o_colored_level">
+                                            <center><h2 class="o_default_snippet_text" t-field="cp.name"/></center>
+                                            <center><h5 class="o_default_snippet_text" t-field="cp.descripcion"/></center>
+                                            <t t-foreach="request.env['usermanual_step'].search([('seccionman_id','=',cp.id)], order='sequence asc' )" t-as="p">                                                
+                                                <h3 class="badge bg-primary">Paso: <span t-field="p.name"/></h3>
+                                                <p class="o_default_snippet_text" t-field="p.note"/>
+                                            </t>
+                                            <!-- <p><a href="#" class="btn btn-primary mb-2 o_default_snippet_text">Ver Video</a></p> -->
+                                        </div>
+                                        <div class="col-lg-6 pt16 pb16 o_colored_level " >
+                                            <t t-if="cp.binary_img" >
+                                                <!-- <a t-att-href="image_data_uri(cp.binary_img)" target="_blank"> -->
+                                                <a t-att-href="image_data_uri(cp.binary_img)" target="_top">
+                                                    <img t-att-src="image_data_uri(cp.binary_img)" class="img img-fluid mx-auto img-thumbnail border border-primary" alt="" loading="lazy"/>
+                                                </a>
+                                            </t>
+
+                                            <t t-if="not cp.binary_img" >
+                                                <a href="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" target="_blank">
+                                                    <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" class="img img-fluid mx-auto border border-primary" alt="" loading="lazy"/>
+                                                </a>
+                                            </t>                                                
+                                        </div>                                        
+                                    </div>
+                                </section>
+                            </tr>                            
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>    
+    </template>
+
+</odoo>

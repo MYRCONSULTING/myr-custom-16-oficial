@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+	<record id="view_usermanual_sec_form" model="ir.ui.view">
+		<field name="name">User Manual Section form</field>
+		<field name="model">usermanual_seccion</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<div name="button_box" position="inside">
+						<button string="Steps" class="oe_stat_button" type="object" name="get_steps" icon="fa-book">
+							<field string="Steps" name="usrmanstep_id" widget="statinfo" />
+						</button>
+					</div>
+					<group>
+						<group>
+							<field name="name" string="Name" required="1"/>	
+							<field name="descripcion" string="Description"/>					
+						</group>
+						<group>							
+							<field name="umanual_id" string="Manual Name" readonly="1"/>
+							<field name="binary_img" string="Img" filename="file_name_img"/>
+							<field name="file_name_img" string="file_name" invisible="1"/>
+						</group>
+					</group>
+					<group>
+						<field name="usrmanstep_id" string="Steps"/>						
+					</group>				
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_usermanual_sec_tree" model="ir.ui.view">
+		<field name="name">User Manual Sectionn tree</field>
+		<field name="model">usermanual_seccion</field>
+		<field name="arch" type="xml">
+			<tree>
+				<control>
+					<create name="add" string="Agregar Seccion"/>
+				</control>
+				<field name="id" string="id" optional="hide" readonly="1"/>
+				<field name="sequence" widget="handle" />
+				<field name="name" string="Name" optional="show"/>
+				<field name="umanual_id" string="Manual Name" optional="show"/>
+				<field name="usrmanstep_id" string="Steps" optional="hdie"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_usermanual_sec_search" model="ir.ui.view">
+		<field name="name">User Manual Section Search</field>
+		<field name="model">usermanual_seccion</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name" string="Name"/>
+				<field name="umanual_id" string="Manual Name" optional="show"/>
+				<searchpanel>
+					<field name="umanual_id" enable_counters="1"/>
+				</searchpanel>
+
+			</search>
+		</field>
+	</record>
+
+</odoo>
